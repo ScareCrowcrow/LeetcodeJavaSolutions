@@ -29,6 +29,7 @@ public class L0042_hard {
         }
         return sum;
     }
+
     public int trap2(int[] height) {
         // 双指针
         if (height == null || height.length < 3) return 0;
