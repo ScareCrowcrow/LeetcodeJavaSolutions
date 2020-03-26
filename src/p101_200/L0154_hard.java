@@ -1,13 +1,16 @@
 package p101_200;
 
+import java.util.Arrays;
+
 // TAG: 二分法
 
-public class L0153_medium {
+public class L0154_hard {
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return nums[0];
         int start = 0;
         int end = nums.length - 1;
+        Arrays.sort(nums);
         if (nums[end] > nums[0]) {
             return nums[0];
         }
@@ -21,6 +24,8 @@ public class L0153_medium {
                 end = mid - 1;
             }
         }
+        if (nums[start] >= nums[0] && nums[start] <= nums[nums.length-1]) return nums[start];
+        if (nums[end] >= nums[0] && nums[end] <= nums[nums.length-1]) return nums[end];
         return -1;
     }
 }
