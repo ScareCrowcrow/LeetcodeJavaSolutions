@@ -3,7 +3,7 @@ package InterviewQuestions;
 // TAG：动态规划
 // dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i])
 
-public class p17_16 {
+public class p17_16_simple {
     public int massage(int[] nums) {
         int n = nums.length;
         if (n == 0) {
