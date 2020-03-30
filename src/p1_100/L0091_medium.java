@@ -15,6 +15,7 @@ package p1_100;
 
 public class L0091_medium {
     public int numDecodings(String s) {
+        // 动态规划
         char[] arr = s.toCharArray();
         int[] dp = new int[s.length() + 1];
         dp[0] = 1;

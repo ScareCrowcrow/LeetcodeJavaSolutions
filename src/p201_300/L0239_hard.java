@@ -1,8 +1,10 @@
 package p201_300;
 
+// 双端队列的作用：滑动窗口
+
 import java.util.LinkedList;
 
-public class p239_hard {
+public class L0239_hard {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] re = {};
         if (k < 1 || nums.length == 0 || k > nums.length) {

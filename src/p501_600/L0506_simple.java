@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class p0506_simple {
+public class L0506_simple {
     public String[] findRelativeRanks(int[] nums) {
         if (nums == null || nums.length == 0) return new String[0];
         if(nums.length==1) {
