@@ -1,4 +1,4 @@
-package others;
+package summarize;
 
 public class EditCost {
     // ic insert cost
