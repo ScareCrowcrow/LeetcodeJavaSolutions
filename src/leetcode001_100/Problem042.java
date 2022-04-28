@@ -1,7 +1,9 @@
 package leetcode001_100;
 
 public class Problem042 {
+    // https://leetcode-cn.com/problems/trapping-rain-water/
     public int trap(int[] arr) {
+        // 只关注i位置的水量，水[i] = max(min(max(0...i-1), max(i+1...N-1)) - arr[i], 0)
         if (arr == null || arr.length < 2) {
             return 0;
         }

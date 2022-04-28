@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class Problem10_05 {
     public int findString(String[] words, String s) {

@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class Problem17_24 {
     /*

@@ -1,6 +1,7 @@
 package leetcode601_700;
 
 public class Problem689 {
+    // https://leetcode-cn.com/problems/maximum-sum-of-3-non-overlapping-subarrays/
     public int[] maxSumOfThreeSubarrays(int[] nums, int k) {
         int N = nums.length;
         int[] range = new int[N];

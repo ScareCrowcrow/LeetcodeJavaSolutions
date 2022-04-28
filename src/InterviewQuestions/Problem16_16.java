@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class Problem16_16 {
     public int[] subSort(int[] array) {

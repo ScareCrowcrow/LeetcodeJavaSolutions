@@ -3,6 +3,7 @@ package leetcode401_500;
 import java.util.PriorityQueue;
 
 public class Problem407 {
+    // https://leetcode-cn.com/problems/trapping-rain-water-ii/
     public static class Node {
         public int value;
         public int row;
@@ -24,6 +25,7 @@ public class Problem407 {
         int M = heightMap[0].length;
         boolean[][] isEnter = new boolean[N][M];
         PriorityQueue<Node> heap = new PriorityQueue<>((a, b) -> a.value - b.value);
+        // 把最外围的四个边界加入小根堆
         for (int col = 0; col < M - 1; col++) {
             isEnter[0][col] = true;
             heap.add(new Node(heightMap[0][col], 0, col));
@@ -47,6 +49,7 @@ public class Problem407 {
             max = Math.max(max, cur.value);
             int r = cur.row;
             int c = cur.col;
+            // 堆顶点上下左右入堆，算水量
             if (r > 0 && !isEnter[r - 1][c]) {
                 water += Math.max(0, max - heightMap[r - 1][c]);
                 isEnter[r - 1][c] = true;

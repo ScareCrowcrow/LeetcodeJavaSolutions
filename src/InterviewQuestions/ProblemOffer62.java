@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class ProblemOffer62 {
     // 约瑟夫环问题

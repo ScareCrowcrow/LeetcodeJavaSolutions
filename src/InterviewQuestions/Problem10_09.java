@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class Problem10_09 {
     public boolean searchMatrix(int[][] matrix, int K) {

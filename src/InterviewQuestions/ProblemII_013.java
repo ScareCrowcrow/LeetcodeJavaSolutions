@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class ProblemII_013 {
     class NumMatrix {

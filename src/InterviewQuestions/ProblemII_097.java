@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class ProblemII_097 {
     // 动态规划: 样本对应模型

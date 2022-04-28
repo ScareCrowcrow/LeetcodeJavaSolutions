@@ -1,4 +1,4 @@
-package others;
+package InterviewQuestions;
 
 public class Problem08_14 {
     // 样本对应模型

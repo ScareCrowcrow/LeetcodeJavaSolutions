@@ -3,6 +3,7 @@ package leetcode901_1000;
 import java.util.HashMap;
 
 public class Problem956 {
+    // https://leetcode-cn.com/problems/tallest-billboard/
     public int tallestBillboard(int[] rods) {
         // key 集合对的某个差
         // value 满足差值为key的集合对中，最好的一对，较小集合的累加和
@@ -11,7 +12,7 @@ public class Problem956 {
         dp.put(0, 0);// 空集 和 空集
         for (int num : rods) {
             if (num != 0) {
-                // cur 内部数据完全和dp一样
+                // cur 内部数据完全和dp一样 老表推新表
                 cur = new HashMap<>(dp); // 考虑x之前的集合差值状况拷贝下来
                 for (int d : cur.keySet()) {
                     int diffMore = cur.get(d); // 最好的一对，较小集合的累加和
