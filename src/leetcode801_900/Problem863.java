@@ -7,6 +7,13 @@ public class Problem863 {
     * step1.生成父亲表，可以从上遍历
     * step2.图的宽度优先遍历，获取第k层节点
     */
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         HashMap<TreeNode, TreeNode> parents = new HashMap<>();
         parents.put(root, null);
