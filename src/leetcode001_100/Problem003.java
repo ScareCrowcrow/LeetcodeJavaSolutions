@@ -1,5 +1,8 @@
 package leetcode001_100;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Problem003 {
     /*
     * 方法有2种：
@@ -55,6 +58,23 @@ public class Problem003 {
             }
         }
         max = Math.max(max, right - left);
+        return max;
+    }
+
+    public int lengthOfLongestSubstring3(String s) {
+        Set<Character> set  = new HashSet<>();
+        int max = 0;
+        // j为快指针，i为慢指针,如果快指针指向的字符已出现在哈希集合，不断尝试将慢指针指向的字符从哈希集合中删除；
+        // 当快指针的字符能加入到哈希集合，更新结果max
+        for(int i = 0, j = 0; j < s.length(); j++){
+            while(set.contains(s.charAt(j))){
+                set.remove(s.charAt(i));
+                i++;
+            }
+
+            set.add(s.charAt(j));
+            max = Math.max(max, set.size());
+        }
         return max;
     }
 }
