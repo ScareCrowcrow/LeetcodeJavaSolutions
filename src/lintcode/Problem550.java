@@ -1,8 +1,8 @@
-package linkcode;
+package lintcode;
 
 import java.util.*;
 
-public class Problem550_TopK {
+public class Problem550 {
     /*
      * @param k: An integer
      */
@@ -14,7 +14,7 @@ public class Problem550_TopK {
     private NodeHeapComp comp;
     private TreeSet<Node> treeSet;
 
-    public Problem550_TopK(int K) {
+    public Problem550(int K) {
         heap = new Node[K];
         heapSize = 0;
         strNodeMap = new HashMap<String, Node>();
