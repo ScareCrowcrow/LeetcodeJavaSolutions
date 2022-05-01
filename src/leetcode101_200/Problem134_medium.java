@@ -15,7 +15,7 @@ public class Problem134_medium {
         return -1;
     }
 
-    public static boolean[] goodArray(int[] g, int[] c) {
+    public static boolean[] goodArray(int[] g, int[] c ) {
         int N = g.length;
         int M = N << 1;
         int[] arr = new int[M];

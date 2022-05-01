@@ -1,7 +1,5 @@
 package leetcode201_300;
 
-// TAG: Trie
-
 /*
 运用了前缀树和图的深度优先遍历算法
 */
@@ -9,7 +7,8 @@ package leetcode201_300;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Problem212 {
+public class Problem212_hard {
+    // https://leetcode-cn.com/problems/word-search-ii/
     public static class TrieNode {
         public TrieNode[] children;
         public String word; //节点直接存当前的单词

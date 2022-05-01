@@ -4,7 +4,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.TreeSet;
 
-public class Problem632 {
+public class Problem632_hard {
+    // https://leetcode-cn.com/problems/smallest-range-covering-elements-from-k-lists/
     // 有序表，不断更新区间
     public static class Node {
         public int value;
