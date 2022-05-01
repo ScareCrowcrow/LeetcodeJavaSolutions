@@ -1,6 +1,7 @@
 package InterviewQuestions;
 
-public class Problem10_09 {
+public class p10_09_medium {
+    // https://leetcode-cn.com/problems/sorted-matrix-search-lcci/
     public boolean searchMatrix(int[][] matrix, int K) {
         if(matrix == null || matrix.length < 1) {
             return false;

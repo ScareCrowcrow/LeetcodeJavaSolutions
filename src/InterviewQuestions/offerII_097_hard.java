@@ -1,6 +1,7 @@
 package InterviewQuestions;
 
-public class ProblemII_097 {
+public class offerII_097_hard {
+    // https://leetcode-cn.com/problems/21dk04/
     // 动态规划: 样本对应模型
     // dp[i][j] = dp[i-1][j] + dp[i-1][j-1](if s[i] == t[j])
     public int numDistinct(String S, String T) {

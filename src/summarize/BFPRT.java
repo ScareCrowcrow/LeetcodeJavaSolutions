@@ -1,6 +1,9 @@
 package summarize;
 
 public class BFPRT {
+    // O(N)时间复杂度计算第K小的数
+    // 方法1：改写快排
+    // 方法2：BFPRT算法
     public static int getMinKthByBFPRT(int[] array, int k) {
         int[] arr = copyArray(array);
         return select(arr, 0, arr.length - 1, k - 1);
@@ -27,9 +30,9 @@ public class BFPRT {
     }
 
     // arr[L...R]  五个数一组
-// 每个小组内部排序
-// 每个小组中位数领出来，组成marr
-// marr中的中位数，返回
+    // 每个小组内部排序
+    // 每个小组中位数领出来，组成marr
+    // marr中的中位数，返回
     public static int medianOfMedians(int[] arr, int L, int R) {
         int size = R - L + 1;
         int offset = size % 5 == 0 ? 0 : 1;
@@ -87,5 +90,26 @@ public class BFPRT {
             ans[i] = arr[i];
         }
         return ans;
+    }
+
+    // 改写快排，时间复杂度O(N)
+    // 在无序数组arr中，找到，如果排序的话，arr[index]的数是什么？
+    public static int getMinKth(int[] arr, int index) {
+        int L = 0;
+        int R = arr.length - 1;
+        int pivot = 0;
+        int[] range = null;
+        while (L < R) {
+            pivot = arr[L + (int) (Math.random() * (R - L + 1))];
+            range = partition(arr, L, R, pivot);
+            if (index < range[0]) {
+                R = range[0] - 1;
+            } else if (index > range[1]) {
+                L = range[1] + 1;
+            } else {
+                return pivot;
+            }
+        }
+        return arr[L];
     }
 }

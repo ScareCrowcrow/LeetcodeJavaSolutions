@@ -1,6 +1,6 @@
 package InterviewQuestions;
 
-public class ProblemOffer62 {
+public class offer_62 {
     // 约瑟夫环问题
     // 给定的编号是0~n-1的情况下，数到m就杀
     // 返回谁会活？

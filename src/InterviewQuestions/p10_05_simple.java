@@ -1,6 +1,7 @@
 package InterviewQuestions;
 
-public class Problem10_05 {
+public class p10_05_simple {
+    // https://leetcode-cn.com/problems/sparse-array-search-lcci/
     public int findString(String[] words, String s) {
         int l = 0, r = words.length - 1, m;
 

@@ -1,6 +1,7 @@
 package leetcode001_100;
 
 public class Problem076 {
+    // https://leetcode-cn.com/problems/minimum-window-substring/
     public String minWindow(String s, String t) {
         if (s == null || t == null || s.length() == 0 || t.length() == 0) return "";
         int matchCount = 0;
@@ -43,5 +44,44 @@ public class Problem076 {
             start++;
         }
         return start;
+    }
+
+    public String minWindow2(String s, String t) {
+        // 有效还款，无效还款
+        if (s.length() < t.length()) {
+            return "";
+        }
+        char[] str = s.toCharArray();
+        char[] target = t.toCharArray();
+        int[] map = new int[256];
+        for (char cha : target) {
+            map[cha]++;
+        }
+        int all = target.length;
+        int L = 0;
+        int R = 0;
+        int minLen = Integer.MAX_VALUE;
+        int ansl = -1;
+        int ansr = -1;
+        while (R != str.length) {
+            map[str[R]]--;
+            if (map[str[R]] >= 0) {
+                all--;
+            }
+            if (all == 0) {
+                while (map[str[L]] < 0) {
+                    map[str[L++]]++;
+                }
+                if (minLen > R - L + 1) {
+                    minLen = R - L + 1;
+                    ansl = L;
+                    ansr = R;
+                }
+                all++;
+                map[str[L++]]++;
+            }
+            R++;
+        }
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(ansl, ansr + 1);
     }
 }
