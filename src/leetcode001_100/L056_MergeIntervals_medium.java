@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Problem056 {
+public class L056_MergeIntervals_medium {
+    // https://leetcode-cn.com/problems/merge-intervals/
     public int[][] merge(int[][] intervals) {
         // 将所有区间按起始时间的先后顺序排序
         Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
@@ -23,5 +24,28 @@ public class Problem056 {
             }
         }
         return result.toArray(new int[result.size()][]);
+    }
+
+    public static int[][] merge2(int[][] intervals) {
+        if (intervals.length == 0) {
+            return new int[0][0];
+        }
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+        int s = intervals[0][0];
+        int e = intervals[0][1];
+        int size = 0;
+        for (int i = 1; i < intervals.length; i++) {
+            if (intervals[i][0] > e) {
+                intervals[size][0] = s;
+                intervals[size++][1] = e;
+                s = intervals[i][0];
+                e = intervals[i][1];
+            } else {
+                e = Math.max(e, intervals[i][1]);
+            }
+        }
+        intervals[size][0] = s;
+        intervals[size++][1] = e;
+        return Arrays.copyOf(intervals, size);
     }
 }
