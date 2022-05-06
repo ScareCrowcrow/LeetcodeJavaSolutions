@@ -2,7 +2,8 @@ package leetcode201_300;
 
 import java.util.Arrays;
 
-public class Problem300 {
+public class L300_LongestIncreasingSubsequence_medium {
+    // https://leetcode-cn.com/problems/longest-increasing-subsequence/
     // 动态规划，O(N^2)
     // dp[i]表示以i结尾最长递增子序列的长度
     /*

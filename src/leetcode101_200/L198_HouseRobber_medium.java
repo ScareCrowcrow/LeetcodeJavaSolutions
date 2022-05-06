@@ -1,7 +1,9 @@
 package leetcode101_200;
 
-public class Problem198 {
+public class L198_HouseRobber_medium {
+    // https://leetcode-cn.com/problems/house-robber/
     /* 动态规划
+    * 不能取相邻数的情况下的累加和最大是多少
     * 以i结尾的累加和
     * 1.只要i位置的数
     * 1.包含arr[i], 则不包含arr[i-1],dp[i-2]+arr[i]
