@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class L128_LongestConsecutiveSequence_medium {
+    // https://leetcode-cn.com/problems/longest-consecutive-sequence/
     public static int longestConsecutive(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int len = 0;
