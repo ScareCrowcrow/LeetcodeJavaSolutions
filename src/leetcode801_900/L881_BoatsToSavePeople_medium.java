@@ -2,7 +2,8 @@ package leetcode801_900;
 
 import java.util.Arrays;
 
-public class Problem881 {
+public class L881_BoatsToSavePeople_medium {
+    // https://leetcode-cn.com/problems/boats-to-save-people/
     // limit/2位置往两边扩
     public int numRescueBoats1(int[] people, int limit) {
         if (people == null || people.length == 0) {
