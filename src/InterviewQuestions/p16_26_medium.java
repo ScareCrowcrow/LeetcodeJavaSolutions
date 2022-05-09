@@ -3,7 +3,7 @@ package InterviewQuestions;
 import java.util.LinkedList;
 
 public class p16_26_medium {
-    // https://leetcode-cn.com/problems/calculator-lcci/
+    // https://leetcode.cn/problems/calculator-lcci/
     public static int calculate(String str) {
         str = str.replace(" ", "");
         return f(str.toCharArray(), 0)[0];

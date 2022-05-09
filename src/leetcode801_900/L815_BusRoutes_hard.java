@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class L815_BusRoutes_hard {
     // https://leetcode-cn.com/problems/bus-routes/
+    // 以公交站做宽度优先遍历
     public static int numBusesToDestination(int[][] routes, int source, int target) {
         if (source == target) {
             return 0;

@@ -1,7 +1,7 @@
 package leetcode001_100;
 
 public class L037_SudokuSolver_hard {
-    // https://leetcode-cn.com/problems/sudoku-solver/
+    // https://leetcode.cn/problems/sudoku-solver/
     public static void solveSudoku(char[][] board) {
         boolean[][] row = new boolean[9][10];
         boolean[][] col = new boolean[9][10];

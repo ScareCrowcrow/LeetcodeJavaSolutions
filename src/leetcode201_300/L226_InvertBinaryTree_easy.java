@@ -1,9 +1,7 @@
 package leetcode201_300;
 
-import p201_300.TreeNode;
-
-public class Problem226 {
-
+public class L226_InvertBinaryTree_easy {
+    // https://leetcode.cn/problems/invert-binary-tree/
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -15,9 +13,9 @@ public class Problem226 {
 
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
-        TreeNode tmp = root.left;
+        TreeNode left = root.left;
         root.left = invertTree(root.right);
-        root.right = invertTree(tmp);
+        root.right = invertTree(left);
         return root;
     }
 }

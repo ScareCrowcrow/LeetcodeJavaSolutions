@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class L003_LengthOfLongestSubstring_medium {
-    // https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+    // https://leetcode.cn/problems/longest-substring-without-repeating-characters/
     /*
     * 方法有2种：
     * 方法1: 动态规划，以i结尾

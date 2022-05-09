@@ -1,6 +1,7 @@
 package leetcode401_500;
 
-public class Problem426 {
+public class L426_ConvertBST2DoubleLinkedList_medium {
+    // https://leetcode.cn/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/
     // 提交时不要提交这个类
     public class Node {
         public int value;

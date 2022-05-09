@@ -40,6 +40,7 @@ public class L1510_StoneGameIV_hard {
         return ans;
     }
 
+    // 时间复杂度O(N^1.5)
     public static boolean winnerSquareGame3(int n) {
         boolean[] dp = new boolean[n + 1];
         for (int i = 1; i <= n; i++) {

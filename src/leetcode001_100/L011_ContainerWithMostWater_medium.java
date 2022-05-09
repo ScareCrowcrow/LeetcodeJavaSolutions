@@ -1,7 +1,7 @@
 package leetcode001_100;
 
 public class L011_ContainerWithMostWater_medium {
-    // https://leetcode-cn.com/problems/container-with-most-water/
+    // https://leetcode.cn/problems/container-with-most-water/
     // 双指针 LR谁小结算谁
     public static int maxArea(int[] h) {
         int max = 0;

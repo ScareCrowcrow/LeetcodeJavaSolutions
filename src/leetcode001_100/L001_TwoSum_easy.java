@@ -11,7 +11,7 @@ import java.util.Map;
  * 时间复杂度为O(n),空间复杂度为O(n)
  * */
 public class L001_TwoSum_easy {
-    // https://leetcode-cn.com/problems/two-sum/
+    // https://leetcode.cn/problems/two-sum/
     public static int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
         if (nums == null || nums.length <= 1) return res;
