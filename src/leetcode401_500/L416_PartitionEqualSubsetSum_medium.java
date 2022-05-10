@@ -60,4 +60,38 @@ public class L416_PartitionEqualSubsetSum_medium {
         }
         return dp[0][sum] == sum;
     }
+
+    public boolean canPartition3(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return false;
+        }
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if ((sum & 1) != 0) {
+            return false;
+        }
+        sum >>= 1;
+        int N = nums.length;
+        boolean[][] dp = new boolean[N][sum + 1];
+        for (int i = 0; i < N; i++) {
+            dp[i][0] = true;
+        }
+        if (nums[0] <= sum) {
+            dp[0][nums[0]] = true;
+        }
+        for (int i = 1; i < N; i++) {
+            for (int j = 1; j <= sum; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (j - nums[i] >= 0) {
+                    dp[i][j] |= dp[i - 1][j - nums[i]];
+                }
+            }
+            if (dp[i][sum]) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
