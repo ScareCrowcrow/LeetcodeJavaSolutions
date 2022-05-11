@@ -1,7 +1,7 @@
 package leetcode201_300;
 
 public class L289_GameOfLife_medium {
-    // https://leetcode-cn.com/problems/game-of-life/
+    // https://leetcode.cn/problems/game-of-life/
     public static void gameOfLife(int[][] board) {
         int N = board.length;
         int M = board[0].length;
