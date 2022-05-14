@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class L015_ThreeSum_medium {
-    // https://leetcode-cn.com/problems/3sum/
+    // https://leetcode.cn/problems/3sum/
     // 在twoSum的基础上改造
     public static List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
