@@ -3,7 +3,7 @@ package leetcode401_500;
 import java.util.ArrayList;
 import java.util.List;
 
-public class L448_448_FindAllNumbersDisappearedInAnArray_easy {
+public class L448_FindAllNumbersDisappearedInAnArray_easy {
     // https://leetcode.cn/problems/find-all-numbers-disappeared-in-an-array/
     // 下标循环怼
     public static List<Integer> findDisappearedNumbers(int[] nums) {

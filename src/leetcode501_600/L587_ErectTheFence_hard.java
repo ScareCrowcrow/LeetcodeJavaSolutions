@@ -2,19 +2,23 @@ package leetcode501_600;
 
 import java.util.Arrays;
 
-public class Problem587 {
-    public static int[][] outerTrees(int[][] points) {
+public class L587_ErectTheFence_hard {
+    // https://leetcode.cn/problems/erect-the-fence/
+    // 凸包
+    public int[][] outerTrees(int[][] points) {
         int n = points.length;
         int s = 0;
         int[][] stack = new int[n << 1][];
         // x小的排前面，x一样的，y小的排前面
         Arrays.sort(points, (a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] - b[1]);
+        // 顺序围一半
         for (int i = 0; i < n; i++) {
             while (s > 1 && cross(stack[s - 2], stack[s - 1], points[i]) > 0) {
                 s--;
             }
             stack[s++] = points[i];
         }
+        // 逆序围另一半
         for (int i = n - 2; i >= 0; i--) {
             while (s > 1 && cross(stack[s - 2], stack[s - 1], points[i]) > 0) {
                 s--;
@@ -40,7 +44,7 @@ public class Problem587 {
     // 如果a到c的向量，在从a到b的向量右侧，返回正数
     // 如果a到c的向量，在从a到b的向量左侧，返回负数
     // 如果a到c的向量，和从a到b的向量重合，返回0
-    public static int cross(int[] a, int[] b, int[] c) {
+    public int cross(int[] a, int[] b, int[] c) {
         return (b[1] - a[1]) * (c[0] - b[0]) - (b[0] - a[0]) * (c[1] - b[1]);
     }
 }
