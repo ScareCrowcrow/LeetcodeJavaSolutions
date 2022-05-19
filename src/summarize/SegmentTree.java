@@ -1,6 +1,7 @@
 package summarize;
 
 public class SegmentTree {
+    // 需要4倍的空间
     // arr[]为原序列的信息从0开始，但在arr里是从1开始的
     // sum[]模拟线段树维护区间和
     // lazy[]为累加和懒惰标记

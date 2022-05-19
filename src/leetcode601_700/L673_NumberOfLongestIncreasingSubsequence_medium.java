@@ -1,17 +1,51 @@
 package leetcode601_700;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TreeMap;
 
 public class L673_NumberOfLongestIncreasingSubsequence_medium {
     // https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/
     // 好理解的方法，时间复杂度O(N^2)
+    public int findNumberOfLIS(int[] nums) {
+        int N = nums.length;
+        if (N <= 1) return N;
+        int[] lengths = new int[N]; //lengths[i] = length of longest ending in nums[i]
+        int[] counts = new int[N]; //count[i] = number of longest ending in nums[i]
+        Arrays.fill(counts, 1);
+
+        for (int j = 0; j < N; ++j) {
+            for (int i = 0; i < j; ++i)
+                if (nums[i] < nums[j]) {
+                    if (lengths[i] >= lengths[j]) {
+                        lengths[j] = lengths[i] + 1;
+                        counts[j] = counts[i];
+                    } else if (lengths[i] + 1 == lengths[j]) {
+                        counts[j] += counts[i];
+                    }
+                }
+        }
+
+        int longest = 0, ans = 0;
+        for (int length : lengths) {
+            longest = Math.max(longest, length);
+        }
+        for (int i = 0; i < N; ++i) {
+            if (lengths[i] == longest) {
+                ans += counts[i];
+            }
+        }
+        return ans;
+    }
+
     public static int findNumberOfLIS1(int[] nums) {
         if (nums == null || nums.length == 0) {
             return 0;
         }
         int n = nums.length;
+        // length of longest ending in nums[i]
         int[] lens = new int[n];
+        // number of longest ending in nums[i]
         int[] cnts = new int[n];
         lens[0] = 1;
         cnts[0] = 1;
