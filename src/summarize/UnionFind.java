@@ -1,6 +1,7 @@
 package summarize;
 
 public class UnionFind {
+    // 用数组模拟树
     // parent[i] = k ： i的父亲是k
     private int[] parent;
     // size[i] = k ： 如果i是代表节点，size[i]才有意义，否则无意义

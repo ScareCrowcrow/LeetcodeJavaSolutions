@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class L124_BinaryTreeMaximumPathSum_hard {
-    // 树形dp
     // https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/
     public static class TreeNode {
         int val;
@@ -19,7 +18,23 @@ public class L124_BinaryTreeMaximumPathSum_hard {
 
     }
 
-    public static int maxPathSum(TreeNode root) {
+    public int maxPathSum(TreeNode root) {
+        oneSideMax(root);
+        return res;
+    }
+
+    public int res = Integer.MIN_VALUE;
+    public int oneSideMax(TreeNode root) {
+        if (root == null) return 0;
+        int left = Math.max(0, oneSideMax(root.left));
+        int right = Math.max(0, oneSideMax(root.right));
+        // 后序位置
+        res = Math.max(res, left + right + root.val);
+        return Math.max(left, right) + root.val;
+    }
+
+    // 树形dp
+    public static int maxPathSum1(TreeNode root) {
         if (root == null) {
             return 0;
         }

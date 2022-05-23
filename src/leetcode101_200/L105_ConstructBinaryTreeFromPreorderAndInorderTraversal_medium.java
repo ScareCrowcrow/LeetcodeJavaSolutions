@@ -14,30 +14,31 @@ public class L105_ConstructBinaryTreeFromPreorderAndInorderTraversal_medium {
         }
     }
 
-    public static TreeNode buildTree1(int[] pre, int[] in) {
-        if (pre == null || in == null || pre.length != in.length) {
-            return null;
-        }
-        return f(pre, 0, pre.length - 1, in, 0, in.length - 1);
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return build(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1);
     }
-
-    // 有一棵树，先序结果是pre[L1...R1]，中序结果是in[L2...R2]
-    // 请建出整棵树返回头节点
-    public static TreeNode f(int[] pre, int L1, int R1, int[] in, int L2, int R2) {
-        if (L1 > R1) {
+    public TreeNode build(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
+        // 前序位置，寻找左右子树的索引
+        if (preStart > preEnd) {
             return null;
         }
-        TreeNode head = new TreeNode(pre[L1]);
-        if (L1 == R1) {
-            return head;
+        int rootVal = preorder[preStart];
+        int index = 0;
+        for (int i = inStart; i <= inEnd; i++) {
+            if (inorder[i] == rootVal) {
+                index = i;
+                break;
+            }
         }
-        int find = L2;
-        while (in[find] != pre[L1]) {
-            find++;
-        }
-        head.left = f(pre, L1 + 1, L1 + find - L2, in, L2, find - 1);
-        head.right = f(pre, L1 + find - L2 + 1, R1, in, find + 1, R2);
-        return head;
+        int leftSize = index - inStart;
+        TreeNode root = new TreeNode(rootVal);
+
+        // 递归构造左右子树
+        root.left = build(preorder, preStart + 1, preStart + leftSize,
+                inorder, inStart, index - 1);
+        root.right = build(preorder, preStart + leftSize + 1, preEnd,
+                inorder, index + 1, inEnd);
+        return root;
     }
 
     public static TreeNode buildTree2(int[] pre, int[] in) {

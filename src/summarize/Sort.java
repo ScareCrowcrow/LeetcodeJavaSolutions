@@ -56,6 +56,7 @@ public class Sort {
 
     // 归并排序：左右组有序，进行merge，相等先拷贝左组的稳定，额外空间就是merge时的help数组
     // 递归方法实现
+    // 归并排序可以看作是二叉树的后序遍历
     public static void mergeSort1(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
@@ -176,6 +177,7 @@ public class Sort {
         return new int[]{less + 1, more};
     }
 
+    // 快排可以看作是二叉树的前序遍历
     public static void quickSort1(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
