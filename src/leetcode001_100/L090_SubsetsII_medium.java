@@ -5,28 +5,28 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class L090_SubsetsII_medium {
+    List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> track = new LinkedList<>();
+
     public List<List<Integer>> subsetsWithDup(int[] nums) {
-        // 对于每一位有两种选择，选或不选
-        LinkedList<List<Integer>> result = new LinkedList<>();
-        if (nums == null || nums.length == 0) return result;
+        // 先排序，让相同的元素靠在一起
         Arrays.sort(nums);
-        subsetsHelper(nums, 0,true, result, new LinkedList<>());
-        return result;
+        backtrack(nums, 0);
+        return res;
     }
 
-    private void subsetsHelper(int[] nums, int currIdx, boolean taken, List<List<Integer>> result, List<Integer> curr){
-        if (currIdx == nums.length) {
-            result.add(new LinkedList<>(curr));
-        }else {
-            // not choose
-            subsetsHelper(nums, currIdx+1, false, result, curr);
-            // choose
-            // 相等的两个元素，如果前一个元素上一轮not choose，后一个元素这一轮choose，会出现重复
-            if (taken || nums[currIdx - 1] != nums[currIdx]){
-                curr.add(nums[currIdx]);
-                subsetsHelper(nums, currIdx+1,true, result, curr);
-                curr.remove(curr.size() - 1);
+    public void backtrack(int[] nums, int start) {
+        // 前序位置，每个节点的值都是一个子集
+        res.add(new LinkedList<>(track));
+
+        for (int i = start; i < nums.length; i++) {
+            // 剪枝逻辑，值相同的相邻树枝，只遍历第一条
+            if (i > start && nums[i] == nums[i - 1]) {
+                continue;
             }
+            track.addLast(nums[i]);
+            backtrack(nums, i + 1);
+            track.removeLast();
         }
     }
 }

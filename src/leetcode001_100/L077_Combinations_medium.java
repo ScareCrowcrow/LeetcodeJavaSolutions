@@ -4,21 +4,32 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class L077_Combinations_medium {
-    public void combineHelper(int first, LinkedList<Integer> curr, List<List<Integer>> res, int n, int k) {
-        if (curr.size() == k)
-            res.add(new LinkedList(curr));
+    public List<List<Integer>> res = new LinkedList<>();
+    // 记录回溯算法的递归路径
+    LinkedList<Integer> track = new LinkedList<>();
 
-        for (int i = first; i < n + 1; ++i) {
-            curr.add(i);
-            combineHelper(i + 1, curr, res, n, k);
-            // 回溯
-            curr.removeLast();
-        }
+    // 主函数
+    public List<List<Integer>> combine(int n, int k) {
+        backtrack(1, n, k);
+        return res;
     }
 
-    public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new LinkedList();
-        combineHelper(1, new LinkedList<Integer>(), res, n,     k);
-        return res;
+    public void backtrack(int start, int n, int k) {
+        // base case
+        if (k == track.size()) {
+            // 遍历到了第 k 层，收集当前节点的值
+            res.add(new LinkedList<>(track));
+            return;
+        }
+
+        // 回溯算法标准框架
+        for (int i = start; i <= n; i++) {
+            // 选择
+            track.addLast(i);
+            // 通过 start 参数控制树枝的遍历，避免产生重复的子集
+            backtrack(i + 1, n, k);
+            // 撤销选择
+            track.removeLast();
+        }
     }
 }

@@ -1,30 +1,53 @@
 package leetcode001_100;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Arrays;
 import java.util.List;
 
 public class L040_CombinationSum2_medium {
     // https://leetcode-cn.com/problems/combination-sum-ii/
+    List<List<Integer>> res = new LinkedList<>();
+    // 记录回溯的路径
+    LinkedList<Integer> track = new LinkedList<>();
+    // 记录 track 中的元素之和
+    int trackSum = 0;
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
-        if (candidates == null || candidates.length == 0 || target == 0) return results;
+        if (candidates.length == 0) {
+            return res;
+        }
+        // 先排序，让相同的元素靠在一起
         Arrays.sort(candidates);
-        combinationHelper(candidates, target, 0, results, new ArrayList<>());
-        return results;
+        backtrack(candidates, 0, target);
+        return res;
     }
 
-    private void combinationHelper(int[] candidates, int target, int index, List<List<Integer>> results, List<Integer> curSeq){
-        if (target == 0){
-            results.add(new ArrayList<Integer>(curSeq));
-        }else if (target > 0){
-            for (int i = index; i < candidates.length; i++){
-                if (i != index && candidates[i] == candidates[i-1]) continue;
-                if (candidates[i] > target) break;
-                curSeq.add(candidates[i]);
-                combinationHelper(candidates, target - candidates[i], i + 1, results, curSeq);
-                curSeq.remove(curSeq.size() - 1);
+    // 回溯算法主函数
+    public void backtrack(int[] nums, int start, int target) {
+        // base case，达到目标和，找到符合条件的组合
+        if (trackSum == target) {
+            res.add(new LinkedList<>(track));
+            return;
+        }
+        // base case，超过目标和，直接结束
+        if (trackSum > target) {
+            return;
+        }
+
+        // 回溯算法标准框架
+        for (int i = start; i < nums.length; i++) {
+            // 剪枝逻辑，值相同的树枝，只遍历第一条
+            if (i > start && nums[i] == nums[i - 1]) {
+                continue;
             }
+            // 做选择
+            track.add(nums[i]);
+            trackSum += nums[i];
+            // 递归遍历下一层回溯树
+            backtrack(nums, i + 1, target);
+            // 撤销选择
+            track.removeLast();
+            trackSum -= nums[i];
         }
     }
 }

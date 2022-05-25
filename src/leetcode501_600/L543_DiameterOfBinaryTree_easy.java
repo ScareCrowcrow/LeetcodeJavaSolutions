@@ -2,7 +2,7 @@ package leetcode501_600;
 
 public class L543_DiameterOfBinaryTree_easy {
     // https://leetcode.cn/problems/diameter-of-binary-tree/
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

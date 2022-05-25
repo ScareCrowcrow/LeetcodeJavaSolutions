@@ -14,40 +14,29 @@ public class L023_mergeKLists_hard {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
-        /*
-        基于最小堆
-        */
-        if (lists == null || lists.length == 0) return null;
-        // 空表头，方便插入节点
-        ListNode dummy = new ListNode(0), cur = dummy;
-
-        int k = lists.length;
-
-        // 定义一个最小堆来保存k个链表节点，将k个链表的头放到最小堆中
-        PriorityQueue<ListNode> heap = new PriorityQueue<>(k, new Comparator<ListNode>(){
-            public int compare(ListNode a, ListNode b){
-                return a.val - b.val;
-            }
-        });
-        for (int i = 0; i < k; i++){
-            // 初始化
-            if(lists[i] != null){
-                // 从最小堆中将当前最小节点取出，插入到结果链表中
-                heap.offer(lists[i]);
-            }
+        if (lists.length == 0) return null;
+        // 虚拟头结点
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        // 优先级队列，最小堆
+        PriorityQueue<ListNode> pq = new PriorityQueue<>(
+                lists.length, (a, b)->(a.val - b.val));
+        // 将 k 个链表的头结点加入最小堆
+        for (ListNode head : lists) {
+            if (head != null)
+                pq.add(head);
         }
-        while (!heap.isEmpty()){
-            // 如果发现该节点后还有后续节点，将其点加入到最小堆中
-            ListNode node = heap.poll();
 
-            cur.next = node;
-            cur = cur.next;
-
-            if (node.next != null){
-                heap.offer(node.next);
+        while (!pq.isEmpty()) {
+            // 获取最小节点，接到结果链表中
+            ListNode node = pq.poll();
+            p.next = node;
+            if (node.next != null) {
+                pq.add(node.next);
             }
+            // p 指针不断前进
+            p = p.next;
         }
-        // 返回结果链表
         return dummy.next;
     }
 

@@ -1,6 +1,7 @@
 package leetcode101_200;
 
-public class Problem121 {
+public class L121_BestTimeToBuyAndSellStock_easy {
+    // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
     public int maxProfit(int[] prices) {
         if(prices == null || prices.length == 0) {
             return 0;

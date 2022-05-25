@@ -3,17 +3,18 @@ package InterviewQuestions;
 public class p02_02_simple {
     // https://leetcode-cn.com/problems/kth-node-from-end-of-list-lcci/
     public int kthToLast(ListNode head, int k) {
-        // 快指针先走k步，然后慢指针再走
-        ListNode fast = head;
-        ListNode slow = head;
-        while(k != 0) {
-            fast = fast.next;
-            k--;
+        ListNode p1 = head;
+        // p1 先走 k 步
+        for (int i = 0; i < k; i++) {
+            p1 = p1.next;
         }
-        while(fast != null) {
-            fast = fast.next;
-            slow = slow.next;
+        ListNode p2 = head;
+        // p1 和 p2 同时走 n - k 步
+        while (p1 != null) {
+            p2 = p2.next;
+            p1 = p1.next;
         }
-        return slow.val;
+        // p2 现在指向第 n - k 个节点
+        return p2.val;
     }
 }

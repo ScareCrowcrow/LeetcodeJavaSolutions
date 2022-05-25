@@ -21,4 +21,12 @@ public class L206_ReverseLinkedList_easy {
         }
         return pre;
     }
+
+    public ListNode reverseList2(ListNode head) {
+        if(head == null || head.next == null) return head;
+        ListNode last = reverseList2(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
+    }
 }

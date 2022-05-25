@@ -4,41 +4,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class L078_Subsets_medium {
+    List<List<Integer>> res = new LinkedList<>();
+    // 记录回溯算法的递归路径
+    LinkedList<Integer> track = new LinkedList<>();
+
+    // 主函数
     public List<List<Integer>> subsets(int[] nums) {
-        // 回溯
-        LinkedList<List<Integer>> result = new LinkedList<>();
-        if (nums == null || nums.length == 0) return result;
-        subsetsHelper(nums, 0, result, new LinkedList<>());
-        return result;
+        backtrack(nums, 0);
+        return res;
     }
 
-    private void subsetsHelper(int[] nums, int currIdx, List<List<Integer>> result, List<Integer> curr){
-        result.add(new LinkedList<>(curr));
-        for (int idx = currIdx; idx < nums.length; idx++){
-            curr.add(nums[idx]);
-            subsetsHelper(nums, idx+1, result, curr);
-            curr.remove(curr.size() - 1);
-        }
-    }
+    // 回溯算法核心函数，遍历子集问题的回溯树
+    public void backtrack(int[] nums, int start) {
 
-    public List<List<Integer>> subsets2(int[] nums) {
-        // 对于每一位有两种选择，选或不选
-        LinkedList<List<Integer>> result = new LinkedList<>();
-        if (nums == null || nums.length == 0) return result;
-        subsetsHelper2(nums, 0, result, new LinkedList<>());
-        return result;
-    }
+        // 前序位置，每个节点的值都是一个子集
+        res.add(new LinkedList<>(track));
 
-    private void subsetsHelper2(int[] nums, int currIdx, List<List<Integer>> result, List<Integer> curr){
-        if (currIdx == nums.length) {
-            result.add(new LinkedList<>(curr));
-        }else {
-            // not choose
-            subsetsHelper2(nums, currIdx+1, result, curr);
-            // choose
-            curr.add(nums[currIdx]);
-            subsetsHelper2(nums, currIdx+1, result, curr);
-            curr.remove(curr.size() - 1);
+        // 回溯算法标准框架
+        for (int i = start; i < nums.length; i++) {
+            // 做选择
+            track.addLast(nums[i]);
+            // 通过 start 参数控制树枝的遍历，避免产生重复的子集
+            backtrack(nums, i + 1);
+            // 撤销选择
+            track.removeLast();
         }
     }
 }

@@ -2,7 +2,6 @@ package leetcode201_300;
 
 public class L283_MoveZeroes_easy {
     // https://leetcode-cn.com/problems/move-zeroes/
-
     public void moveZeroes(int[] nums) {
         int p = removeElement(nums, 0);
         for(;p < nums.length; p++) {

@@ -10,33 +10,50 @@ package leetcode001_100;
 public class L034_FindFirstAndLastPositionOfElementInSortedArray_medium {
     // https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/
     public int[] searchRange(int[] nums, int target) {
-        int[] res = {-1, -1};
-        if (nums == null || nums.length == 0) return res;
-        int st_point = -1, end_point = -1;
-        int start = 0, end = nums.length - 1;
-        // find the start point
-        while (start + 1 < end){
-            int mid = start + (end - start) / 2;
-            if (nums[mid] >= target) end = mid;
-            else start = mid;
-        }
-        if (nums[start] == target) st_point = start;
-        else if (nums[end] == target) st_point = end;
-        if (st_point == -1) return res;
+        return new int[]{left_bound(nums, target), right_bound(nums, target)};
+    }
 
-        start = 0;
-        end = nums.length - 1;
-        // find the end point
-        while (start + 1 < end){
-            int mid = start + (end - start) / 2;
-            if (nums[mid] > target) end = mid;
-            else start = mid;
+    public int left_bound(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        // 搜索区间为 [left, right]
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                // 搜索区间变为 [mid+1, right]
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                // 搜索区间变为 [left, mid-1]
+                right = mid - 1;
+            } else if (nums[mid] == target) {
+                // 收缩右侧边界
+                right = mid - 1;
+            }
         }
-        if (nums[end] == target) end_point = end;
-        else if(nums[start] == target) end_point = start;
-        res[0] = st_point;
-        res[1] = end_point;
-        return res;
+        // 检查出界情况
+        if (left >= nums.length || nums[left] != target) {
+            return -1;
+        }
+        return left;
+    }
+
+    public int right_bound(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < target) {
+                left = mid + 1;
+            } else if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] == target) {
+                // 收缩左侧边界
+                left = mid + 1;
+            }
+        }
+        // 检查出界情况
+        if (right < 0 || nums[right] != target) {
+            return -1;
+        }
+        return right;
     }
 
     public static int[] searchRange2(int[] nums, int target) {

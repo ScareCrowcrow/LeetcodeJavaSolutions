@@ -1,29 +1,47 @@
 package leetcode001_100;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class L039_CombinationSum_medium {
     // https://leetcode-cn.com/problems/combination-sum/
+    public List<List<Integer>> res = new LinkedList<>();
+    // 记录回溯的路径
+    LinkedList<Integer> track = new LinkedList<>();
+    // 记录 track 中的路径和
+    int trackSum = 0;
+
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> results = new ArrayList<List<Integer>>();
-        if (candidates == null || candidates.length == 0 || target == 0) return results;
-        Arrays.sort(candidates);
-        combinationHelper(candidates, target, 0, results, new ArrayList<>());
-        return results;
+        if (candidates.length == 0) {
+            return res;
+        }
+        backtrack(candidates, 0, target);
+        return res;
     }
 
-    private void combinationHelper(int[] candidates, int target, int index, List<List<Integer>> results, List<Integer> curSeq){
-        if (target == 0){
-            results.add(new ArrayList<Integer>(curSeq));
-        }else if (target > 0){
-            for (int i = index; i < candidates.length; i++){
-                if (candidates[i] > target) break;
-                curSeq.add(candidates[i]);
-                combinationHelper(candidates, target - candidates[i], i, results, curSeq);
-                curSeq.remove(curSeq.size() - 1);
-            }
+    // 回溯算法主函数
+    public void backtrack(int[] nums, int start, int target) {
+        // base case，找到目标和，记录结果
+        if (trackSum == target) {
+            res.add(new LinkedList<>(track));
+            return;
+        }
+        // base case，超过目标和，停止向下遍历
+        if (trackSum > target) {
+            return;
+        }
+
+        // 回溯算法标准框架
+        for (int i = start; i < nums.length; i++) {
+            // 选择 nums[i]
+            trackSum += nums[i];
+            track.add(nums[i]);
+            // 递归遍历下一层回溯树
+            // 同一元素可重复使用，注意参数
+            backtrack(nums, i, target);
+            // 撤销选择 nums[i]
+            trackSum -= nums[i];
+            track.removeLast();
         }
     }
 }
