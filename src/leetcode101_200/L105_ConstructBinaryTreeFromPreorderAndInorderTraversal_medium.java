@@ -3,7 +3,7 @@ package leetcode101_200;
 import java.util.HashMap;
 
 public class L105_ConstructBinaryTreeFromPreorderAndInorderTraversal_medium {
-    // https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+    // https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
     public static class TreeNode {
         int val;
         TreeNode left;

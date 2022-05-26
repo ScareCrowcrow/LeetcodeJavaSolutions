@@ -13,14 +13,17 @@ public class L230_KthSmallestElementInABST_medium {
         }
     }
 
-    public int kthSmallest(TreeNode root, int k) {
+    int kthSmallest(TreeNode root, int k) {
+        // 利用 BST 的中序遍历特性
         traverse(root, k);
         return res;
     }
 
-    public int res = 0;
-    public int rank = 0;
-    public void traverse(TreeNode root, int k) {
+    // 记录结果
+    int res = 0;
+    // 记录当前元素的排名
+    int rank = 0;
+    void traverse(TreeNode root, int k) {
         if (root == null) {
             return;
         }
@@ -28,6 +31,7 @@ public class L230_KthSmallestElementInABST_medium {
         /* 中序遍历代码位置 */
         rank++;
         if (k == rank) {
+            // 找到第 k 小的元素
             res = root.val;
             return;
         }

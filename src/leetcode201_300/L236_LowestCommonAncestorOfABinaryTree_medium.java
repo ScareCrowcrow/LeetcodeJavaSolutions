@@ -1,6 +1,7 @@
 package leetcode201_300;
 
-public class Problem236 {
+public class L236_LowestCommonAncestorOfABinaryTree_medium {
+    // https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/
     public static class TreeNode {
         int val;
         TreeNode left;
