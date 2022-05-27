@@ -1,6 +1,7 @@
 package leetcode1301_1400;
 
-public class Problem1312 {
+public class L1312_MinimumInsertionStepsToMakeAStringPalindrome_hard {
+    // https://leetcode.cn/problems/minimum-insertion-steps-to-make-a-string-palindrome/
     // 范围上尝试模型
     public int minInsertions(String s) {
         if (s == null || s.length() < 2) {

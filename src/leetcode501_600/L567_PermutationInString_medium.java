@@ -1,6 +1,7 @@
 package leetcode501_600;
 
-public class Problem567 {
+public class L567_PermutationInString_medium {
+    // https://leetcode.cn/problems/permutation-in-string/
     // 窗口+hashMap
     public boolean checkInclusion(String s1, String s2) {
         return containExactly(s2, s1) != -1;

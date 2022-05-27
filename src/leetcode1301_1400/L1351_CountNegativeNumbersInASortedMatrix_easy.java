@@ -1,6 +1,7 @@
 package leetcode1301_1400;
 
-public class Problem1351 {
+public class L1351_CountNegativeNumbersInASortedMatrix_easy {
+    // https://leetcode.cn/problems/count-negative-numbers-in-a-sorted-matrix/
     public int countNegatives(int[][] grid) {
         int res = 0;
         int row = 0, col = grid[0].length - 1;

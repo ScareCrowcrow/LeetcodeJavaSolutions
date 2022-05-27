@@ -3,7 +3,7 @@ package leetcode301_400;
 import java.util.Arrays;
 import java.util.Comparator;
 
-public class Problem354_MaxEnvelopes_hard {
+public class L354_MaxEnvelopes_hard {
     // https://leetcode-cn.com/problems/russian-doll-envelopes/
     // 长度由小到大，高度右大到小
     // 结论：取出排序后的高度值组成的数组，其最长递增子序列即为套娃层数

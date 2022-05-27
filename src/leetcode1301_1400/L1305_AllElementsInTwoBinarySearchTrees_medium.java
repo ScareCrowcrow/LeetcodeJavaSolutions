@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Problem1305 {
+public class L1305_AllElementsInTwoBinarySearchTrees_medium {
     // https://leetcode-cn.com/problems/all-elements-in-two-binary-search-trees/
     public static class TreeNode {
         int val;
