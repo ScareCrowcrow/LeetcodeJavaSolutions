@@ -1,6 +1,6 @@
 package leetcode101_200;
 
-public class Problem135 {
+public class L135_Candy_hard {
     // 时间复杂度O(N)，额外空间复杂度O(N)
     // 贪心从左往右算一遍，从右往左算一遍，同一位置取最大
     public int candy1(int[] arr) {

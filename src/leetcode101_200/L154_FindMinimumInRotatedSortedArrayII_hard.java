@@ -2,7 +2,7 @@ package leetcode101_200;
 
 import java.util.Arrays;
 
-public class Problem154 {
+public class L154_FindMinimumInRotatedSortedArrayII_hard {
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return nums[0];

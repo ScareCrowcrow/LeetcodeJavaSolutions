@@ -3,7 +3,7 @@ package leetcode101_200;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Problem149 {
+public class L149_MaxPointsOnALine_hard {
     // https://leetcode-cn.com/problems/max-points-on-a-line/
     public static int maxPoints(int[][] points) {
         if (points == null) {

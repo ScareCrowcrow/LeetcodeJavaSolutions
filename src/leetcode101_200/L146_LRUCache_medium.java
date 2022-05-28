@@ -2,10 +2,10 @@ package leetcode101_200;
 
 import java.util.HashMap;
 
-public class Problem146 {
+public class L146_LRUCache_medium {
     // HashMap存数据
     // 双向链表存先后关系
-    public Problem146(int capacity) {
+    public L146_LRUCache_medium(int capacity) {
         cache = new MyCache<>(capacity);
     }
 

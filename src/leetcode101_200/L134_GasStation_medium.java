@@ -2,7 +2,7 @@ package leetcode101_200;
 
 import java.util.LinkedList;
 
-public class Problem134_medium {
+public class L134_GasStation_medium {
     // https://leetcode-cn.com/problems/gas-station/
     // 这个方法的时间复杂度O(N)，额外空间复杂度O(N)
     public static int canCompleteCircuit(int[] gas, int[] cost) {

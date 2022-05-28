@@ -1,6 +1,6 @@
 package leetcode101_200;
 
-public class Problem132 {
+public class L132_PalindromePartitioningII_hard {
     public int minCut(String s) {
         if (s == null || s.length() < 2) {
             return 0;

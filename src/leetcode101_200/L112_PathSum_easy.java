@@ -1,6 +1,7 @@
 package leetcode101_200;
 
-public class Problem112 {
+public class L112_PathSum_easy {
+    // https://leetcode.cn/problems/path-sum/
     public static class TreeNode {
         int val;
         TreeNode left;

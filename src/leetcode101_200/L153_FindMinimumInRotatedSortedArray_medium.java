@@ -1,6 +1,6 @@
 package leetcode101_200;
 
-public class Problem153 {
+public class L153_FindMinimumInRotatedSortedArray_medium {
     public int findMin(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         if (nums.length == 1) return nums[0];

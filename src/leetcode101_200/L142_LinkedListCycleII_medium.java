@@ -1,6 +1,6 @@
 package leetcode101_200;
 
-public class Problem142 {
+public class L142_LinkedListCycleII_medium {
     public static class ListNode {
         int val;
         ListNode next;

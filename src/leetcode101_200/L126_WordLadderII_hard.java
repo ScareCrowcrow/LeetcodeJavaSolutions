@@ -2,7 +2,7 @@ package leetcode101_200;
 
 import java.util.*;
 
-public class Problem126_hard {
+public class L126_WordLadderII_hard {
     // https://leetcode-cn.com/problems/word-ladder-ii/
     public static List<List<String>> findLadders(String start, String end, List<String> list) {
         list.add(start);
