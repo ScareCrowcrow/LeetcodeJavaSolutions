@@ -1,9 +1,10 @@
 package leetcode501_600;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Problem589 {
+public class L589_NAryTreePreorderTraversal_easy {
     public static class Node {
         public int val;
         public List<Node> children;
@@ -33,5 +34,17 @@ public class Problem589 {
                 helper(child, res);
             }
         }
+    }
+
+    public List<Integer> preorder2(Node root) {
+        List<Integer> ans = new LinkedList<>();
+        if (root == null) {
+            return ans;
+        }
+        ans.add(root.val);
+        for (Node child: root.children) {
+            ans.addAll(preorder2(child));
+        }
+        return ans;
     }
 }

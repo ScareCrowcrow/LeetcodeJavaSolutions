@@ -1,9 +1,11 @@
 package leetcode101_200;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class L144_BinaryTreePreorderTraversal_easy {
+    // https://leetcode.cn/problems/binary-tree-preorder-traversal/
     public static class TreeNode {
         int val;
         TreeNode left;
@@ -12,16 +14,28 @@ public class L144_BinaryTreePreorderTraversal_easy {
             val = x;
         }
     }
+
+    List<Integer> ans = new LinkedList<>();
     public List<Integer> preorderTraversal(TreeNode root) {
-        ArrayList<Integer> res = new ArrayList();
-        if(root == null) return res;
-        helper(root, res);
-        return res;
+        traverse(root);
+        return ans;
     }
 
-    private void helper(TreeNode root, List<Integer> res){
+    private void traverse(TreeNode root) {
+        if (root == null) return;
+        ans.add(root.val);
+        traverse(root.left);
+        traverse(root.right);
+    }
+
+    public List<Integer> preorderTraversal2(TreeNode root) {
+        List<Integer> res = new LinkedList<>();
+        if (root == null) {
+            return res;
+        }
         res.add(root.val);
-        if(root.left != null) helper(root.left, res);
-        if(root.right != null) helper(root.right, res);
+        res.addAll(preorderTraversal2(root.left));
+        res.addAll(preorderTraversal2(root.right));
+        return res;
     }
 }
