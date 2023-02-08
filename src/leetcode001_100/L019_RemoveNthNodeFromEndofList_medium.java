@@ -37,27 +37,4 @@ public class L019_RemoveNthNodeFromEndofList_medium {
         // p2 现在指向第 n - k 个节点
         return p2;
     }
-
-    public static ListNode removeNthFromEnd2(ListNode head, int n) {
-        ListNode cur = head;
-        ListNode pre = null;
-        while (cur != null) {
-            n--;
-            if (n == -1) {
-                pre = head;
-            }
-            if (n < -1) {
-                pre = pre.next;
-            }
-            cur = cur.next;
-        }
-        if (n > 0) {
-            return head;
-        }
-        if (pre == null) {
-            return head.next;
-        }
-        pre.next = pre.next.next;
-        return head;
-    }
 }

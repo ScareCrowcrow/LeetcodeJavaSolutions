@@ -14,6 +14,7 @@ public class L023_mergeKLists_hard {
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
+        // 时间复杂度O(NlogK)：其中 k 是链表的条数，N 是这些链表 的节点总数；⼀次 poll 或者 add ⽅法的时间复杂度是 O(logk)
         if (lists.length == 0) return null;
         // 虚拟头结点
         ListNode dummy = new ListNode(-1);

@@ -2,6 +2,7 @@ package leetcode1101_1200;
 
 public class L1109_CorporateFlightBookings_medium {
     // https://leetcode.cn/problems/corporate-flight-bookings/
+    // 差分数组
     public int[] corpFlightBookings(int[][] bookings, int n) {
         // nums 初始化为全 0
         int[] nums = new int[n];
