@@ -5,6 +5,26 @@ import java.util.HashSet;
 
 public class L128_LongestConsecutiveSequence_medium {
     // https://leetcode-cn.com/problems/longest-consecutive-sequence/
+    public static int longestConsecutive3(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num: nums) {
+            set.add(num);
+        }
+        int maxLen = 0;
+        for (int num: nums) {
+            // 头元素
+            if (!set.contains(num-1)) {
+                int len = 0;
+                // 中间元素还在
+                while (set.contains(num+len)) {
+                    len++;
+                    maxLen = Math.max(maxLen, len);
+                }
+            }
+        }
+        return maxLen;
+    }
+
     public static int longestConsecutive(int[] nums) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int len = 0;
