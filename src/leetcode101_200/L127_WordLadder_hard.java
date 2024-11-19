@@ -4,6 +4,42 @@ import java.util.*;
 
 public class L127_WordLadder_hard {
     // https://leetcode-cn.com/problems/word-ladder/
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if (beginWord.equals(endWord)) return 0;
+        HashSet<String> wordSet = new HashSet<>(wordList);
+        if (!wordSet.contains(endWord)) return 0;
+        HashSet<String> visited = new HashSet<>();
+        Queue<String> q = new LinkedList<>();
+        q.offer(beginWord);
+        visited.add(beginWord);
+        int step = 1;
+        int n = beginWord.length();
+        while (!q.isEmpty()) {
+            int sz = q.size();
+            for (int i = 0; i < sz; i++) {
+                String cur = q.poll();
+                for (int j = 0; j < n; j++) {
+                    for (char k = 'a'; k <= 'z'; k++) {
+                        if (cur.charAt(j) != k) {
+                            StringBuffer sb = new StringBuffer(cur);
+                            sb.setCharAt(j, k);
+                            String next = sb.toString();
+                            if (!visited.contains(next) && wordSet.contains(next)) {
+                                if (next.equals(endWord)) {
+                                    return step + 1;
+                                }
+                                q.offer(next);
+                                visited.add(next);
+                            }
+                        }
+                    }
+                }
+            }
+            step++;
+        }
+        return 0;
+    }
+
     // start，出发的单词
     // to, 目标单位
     // list, 列表
